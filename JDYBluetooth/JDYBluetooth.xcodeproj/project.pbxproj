@@ -16,6 +16,8 @@
 		4BB37A5E1DEECB1700FEAD83 /* BLEPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A5D1DEECB1700FEAD83 /* BLEPeripheral.m */; };
 		4BB37A621DEEDD2B00FEAD83 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A601DEEDD2B00FEAD83 /* ScanViewController.m */; };
 		4BB37A631DEEDD2B00FEAD83 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BB37A611DEEDD2B00FEAD83 /* ScanViewController.xib */; };
+		4BB37A6B1DEF0C4200FEAD83 /* ScanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A691DEF0C4200FEAD83 /* ScanTableViewCell.m */; };
+		4BB37A6C1DEF0C4200FEAD83 /* ScanTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BB37A6A1DEF0C4200FEAD83 /* ScanTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,9 @@
 		4BB37A601DEEDD2B00FEAD83 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		4BB37A611DEEDD2B00FEAD83 /* ScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
 		4BB37A641DEEEEE400FEAD83 /* BLE.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BLE.h; sourceTree = "<group>"; };
+		4BB37A681DEF0C4200FEAD83 /* ScanTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanTableViewCell.h; sourceTree = "<group>"; };
+		4BB37A691DEF0C4200FEAD83 /* ScanTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanTableViewCell.m; sourceTree = "<group>"; };
+		4BB37A6A1DEF0C4200FEAD83 /* ScanTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,9 +76,7 @@
 			children = (
 				4BB37A401DEEC8FA00FEAD83 /* AppDelegate.h */,
 				4BB37A411DEEC8FA00FEAD83 /* AppDelegate.m */,
-				4BB37A5F1DEEDD2B00FEAD83 /* ScanViewController.h */,
-				4BB37A601DEEDD2B00FEAD83 /* ScanViewController.m */,
-				4BB37A611DEEDD2B00FEAD83 /* ScanViewController.xib */,
+				4BB37A651DEF0BCB00FEAD83 /* Scan */,
 				4BB37A581DEECA3B00FEAD83 /* SDK */,
 				4BB37A491DEEC8FA00FEAD83 /* Assets.xcassets */,
 				4BB37A4B1DEEC8FA00FEAD83 /* LaunchScreen.storyboard */,
@@ -109,6 +112,19 @@
 				4BB37A5D1DEECB1700FEAD83 /* BLEPeripheral.m */,
 			);
 			path = SDK;
+			sourceTree = "<group>";
+		};
+		4BB37A651DEF0BCB00FEAD83 /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				4BB37A5F1DEEDD2B00FEAD83 /* ScanViewController.h */,
+				4BB37A601DEEDD2B00FEAD83 /* ScanViewController.m */,
+				4BB37A611DEEDD2B00FEAD83 /* ScanViewController.xib */,
+				4BB37A681DEF0C4200FEAD83 /* ScanTableViewCell.h */,
+				4BB37A691DEF0C4200FEAD83 /* ScanTableViewCell.m */,
+				4BB37A6A1DEF0C4200FEAD83 /* ScanTableViewCell.xib */,
+			);
+			name = Scan;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +188,7 @@
 			files = (
 				4BB37A631DEEDD2B00FEAD83 /* ScanViewController.xib in Resources */,
 				4BB37A4D1DEEC8FA00FEAD83 /* LaunchScreen.storyboard in Resources */,
+				4BB37A6C1DEF0C4200FEAD83 /* ScanTableViewCell.xib in Resources */,
 				4BB37A4A1DEEC8FA00FEAD83 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +202,7 @@
 			files = (
 				4BB37A421DEEC8FA00FEAD83 /* AppDelegate.m in Sources */,
 				4BB37A621DEEDD2B00FEAD83 /* ScanViewController.m in Sources */,
+				4BB37A6B1DEF0C4200FEAD83 /* ScanTableViewCell.m in Sources */,
 				4BB37A5E1DEECB1700FEAD83 /* BLEPeripheral.m in Sources */,
 				4BB37A3F1DEEC8FA00FEAD83 /* main.m in Sources */,
 				4BB37A5B1DEECAF000FEAD83 /* BLECentralManager.m in Sources */,

@@ -8,9 +8,13 @@
 
 #import "ScanViewController.h"
 #import "BLECentralManager.h"
+#import "ScanTableViewCell.h"
 
-@interface ScanViewController ()
-@property(nonatomic, strong)BLECentralManager *centralm;
+@interface ScanViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property(nonatomic, strong)BLECentralManager *central;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *scanBtn;
+
 @end
 
 @implementation ScanViewController
@@ -19,18 +23,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+//    [_tableView registerClass:[ScanTableViewCell class] forCellReuseIdentifier:@"cell"];
+    [_tableView registerNib:[UINib nibWithNibName:@"ScanTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    
 }
 
 - (void)setupCentral {
-    self.centralm = [[BLECentralManager alloc] initWithQueue:nil updateState:^(BLEManagerState status) {
+    self.central = [[BLECentralManager alloc] initWithQueue:nil updateState:^(BLEManagerState status) {
         
     }];
     
     
 }
-- (IBAction)scan:(id)sender {
-}
-- (IBAction)stopScan:(id)sender {
+- (IBAction)scanOrStopAction:(id)sender {
+    
+    if (sender) {
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,14 +47,17 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
 }
-*/
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *ide = @"cell";
+    return [tableView dequeueReusableCellWithIdentifier:ide forIndexPath:indexPath];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
 
 @end

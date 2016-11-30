@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "ScanViewController.h"
 
 @interface AppDelegate ()
 
@@ -20,6 +21,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    ScanViewController *vc = [[ScanViewController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
+    self.window.rootViewController = navi;
     
     return YES;
 }
