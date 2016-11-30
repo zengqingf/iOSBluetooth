@@ -6,8 +6,45 @@
 //  Copyright © 2016年 zengqingfu. All rights reserved.
 //
 
+
+
 #import <Foundation/Foundation.h>
+#import "BLEPeripheral.h"
+
+typedef NS_ENUM(NSInteger, BLEManagerState) {
+    BLEManagerStateUnknown = 0,
+    BLEManagerStateResetting,
+    BLEManagerStateUnsupported,
+    BLEManagerStateUnauthorized,
+    BLEManagerStatePoweredOff,
+    BLEManagerStatePoweredOn,
+};
+
+typedef NS_ENUM(NSInteger, BLEConnectPeripheral) {
+    BLEConnectPeripheralDisconnected = 0,
+    BLEConnectPeripheralSuccess,
+    BLEConnectPeripheralFail,
+};
 
 @interface BLECentralManager : NSObject
+
+@property(nonatomic, assign, readonly) BLEManagerState state;
+@property(nonatomic, assign, readonly) BOOL isScanning;
+
+- (instancetype)initWithQueue:(dispatch_queue_t)queue updateState:(void (^)(BLEManagerState status))block;
+
+//返回值YES 表示真实的调用了扫描方法
+//返回值NO 表示由于正在扫描或者蓝牙未打开导致不能扫描
+//超时后，会自动调用停止扫描
+- (BOOL)scanWithTimeout:(NSTimeInterval)ti
+     discoverPeripheral:(void (^)(BLEPeripheral *ble_peripheral))discoverPeripheralBlock
+               complete:(void (^)(void))scanCompleteBlock;
+- (void)stopScanning;//停止扫描
+
+
+//连接
+- (void) connectPerpheral:(BLEPeripheral *)ble_peripheral connectStateChangeBlock:(void (^)(BLEConnectPeripheral state, NSError *error)) block;
+//断开连接
+- (void)disConnectBT:(BLEPeripheral *)ble_peripheral;
 
 @end
