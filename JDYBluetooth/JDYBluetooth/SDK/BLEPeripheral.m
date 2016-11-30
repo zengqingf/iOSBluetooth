@@ -80,7 +80,7 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
     }
 }
 
-- (void)setReceiveMessageBlock:(void (^)(NSData *data, NSError *error))block {
+- (void)startReceiveDataWithBlock:(void (^)(NSData *data, NSError *error))block {
     self.receiveDataBlock = block;
 }
 

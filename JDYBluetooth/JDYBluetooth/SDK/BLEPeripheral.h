@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, BLECharacteristicWriteType) {
 //实际发送数据过程中发现data超过60个字节之后蓝牙会产生异常，建议超过50个字节的数据进行拆包分批次发送
 - (void)sendData:(NSData *)data type:(BLECharacteristicWriteType) type sendMessageCompleteBlock:(void (^)(NSError * error))block;
 //监控蓝牙外设发过来的消息
-- (void)setReceiveMessageBlock:(void (^)(NSData *data, NSError *error))block;
+- (void)startReceiveDataWithBlock:(void (^)(NSData *data, NSError *error))block;
 
 
 
