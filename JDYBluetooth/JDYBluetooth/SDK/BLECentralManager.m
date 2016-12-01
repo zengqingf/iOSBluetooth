@@ -101,7 +101,9 @@ typedef void (^ScanCompleteBlock)(void);
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *, id> *)advertisementData RSSI:(NSNumber *)RSSI {
     BLECentralBrage *ble_brage = [_dic_discover_bleperipheral objectForKey:peripheral];
     if (ble_brage) {
-        [ble_brage.ble_peripheral setAdvertisementData:advertisementData];
+        static NSString *adv_key = @"advertisementData";
+        [ble_brage.ble_peripheral setValue:advertisementData forKey:adv_key];
+        
     } else {
         BLEPeripheral *ble_peripheral = [[BLEPeripheral alloc] initWithCBPeripheral:peripheral advertisementData:advertisementData];
         ble_brage = [[BLECentralBrage alloc] initWithBLEPeripheral:ble_peripheral];

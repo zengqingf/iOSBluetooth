@@ -98,9 +98,7 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
     return _peripheral;
 }
 
-- (void)setAdvertisementData:(NSDictionary *)advertisementData {
-    _advertisementData = advertisementData;
-}
+
 - (NSDictionary *)getAdvertisementData {
     return _advertisementData;
 }
