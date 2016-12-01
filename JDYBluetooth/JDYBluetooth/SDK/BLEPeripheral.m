@@ -61,18 +61,6 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
     NSInteger st = _peripheral.state;
     return st;
 }
-- (instancetype)initWithCBPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData {
-    self = [super init];
-    if (self) {
-        self.peripheral = peripheral;
-        self.advertisementData = advertisementData;
-        self.mJDYServiceUUID = [CBUUID UUIDWithString:kJDYServiceUUID];
-        self.mJDYNofifyUUID  = [CBUUID UUIDWithString:kJDYNotifyUUID];
-        self.mJDYWriteUUID   = [CBUUID UUIDWithString:kJDYWriteUUID];
-        [_peripheral addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
-    }
-    return self;
-}
 
 - (instancetype)init {
     self = [super init];

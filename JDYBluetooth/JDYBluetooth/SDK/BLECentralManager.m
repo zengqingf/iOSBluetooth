@@ -100,15 +100,16 @@ static NSString *peripheral_key = @"peripheral";
     }
 }
 
-
+static NSString *adv_key = @"advertisementData";
 - (void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary<NSString *, id> *)advertisementData RSSI:(NSNumber *)RSSI {
     BLECentralBrage *ble_brage = [_dic_discover_bleperipheral objectForKey:peripheral];
     if (ble_brage) {
-        static NSString *adv_key = @"advertisementData";
         [ble_brage.ble_peripheral setValue:advertisementData forKey:adv_key];
         
     } else {
-        BLEPeripheral *ble_peripheral = [[BLEPeripheral alloc] initWithCBPeripheral:peripheral advertisementData:advertisementData];
+        BLEPeripheral *ble_peripheral = [[BLEPeripheral alloc] init];
+        [ble_peripheral setValue:peripheral forKey:peripheral_key];
+        [ble_peripheral setValue:advertisementData forKey:adv_key];
         ble_brage = [[BLECentralBrage alloc] initWithBLEPeripheral:ble_peripheral];
     }
     [_dic_discover_bleperipheral setObject:ble_brage forKey:peripheral];
