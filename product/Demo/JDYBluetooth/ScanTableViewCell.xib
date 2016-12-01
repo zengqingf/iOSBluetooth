@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ScanTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ex-aA-VEJ">
+                        <rect key="frame" x="8" y="11" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6x-LU-SBb">
+                        <rect key="frame" x="120" y="0.0" width="200" height="43"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfC-JN-hch">
+                                <rect key="frame" x="79.5" y="6" width="31" height="30"/>
+                                <state key="normal" title="连接"/>
+                                <connections>
+                                    <action selector="btnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Nw5-wR-DEc"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Yx-RJ-qfa">
+                                <rect key="frame" x="50" y="0.0" width="90" height="43"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nWO-IV-VxB">
+                                        <rect key="frame" x="8" y="11" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="lEj-PJ-ple"/>
+                                            <constraint firstAttribute="width" constant="20" id="vxV-hc-ObO"/>
+                                        </constraints>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="连接中" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vGV-Fs-Mep">
+                                        <rect key="frame" x="31" y="13" width="46" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="nWO-IV-VxB" firstAttribute="leading" secondItem="6Yx-RJ-qfa" secondAttribute="leading" constant="8" id="2Z9-pS-uzW"/>
+                                    <constraint firstItem="vGV-Fs-Mep" firstAttribute="leading" secondItem="nWO-IV-VxB" secondAttribute="trailing" constant="3" id="3hs-1j-dNY"/>
+                                    <constraint firstItem="vGV-Fs-Mep" firstAttribute="centerY" secondItem="6Yx-RJ-qfa" secondAttribute="centerY" id="eZz-Wf-9Tg"/>
+                                    <constraint firstAttribute="width" constant="90" id="rtn-eD-csR"/>
+                                    <constraint firstItem="nWO-IV-VxB" firstAttribute="centerY" secondItem="6Yx-RJ-qfa" secondAttribute="centerY" id="wCr-Lt-Poq"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cfC-JN-hch" firstAttribute="centerY" secondItem="N6x-LU-SBb" secondAttribute="centerY" id="8dr-qt-aK2"/>
+                            <constraint firstAttribute="trailing" secondItem="6Yx-RJ-qfa" secondAttribute="trailing" constant="60" id="Cjk-Qk-iyj"/>
+                            <constraint firstAttribute="bottom" secondItem="6Yx-RJ-qfa" secondAttribute="bottom" id="ZIf-EM-xcL"/>
+                            <constraint firstItem="6Yx-RJ-qfa" firstAttribute="top" secondItem="N6x-LU-SBb" secondAttribute="top" id="gYZ-LY-xC1"/>
+                            <constraint firstItem="cfC-JN-hch" firstAttribute="centerX" secondItem="6Yx-RJ-qfa" secondAttribute="centerX" id="glE-5C-ZhD"/>
+                            <constraint firstAttribute="width" constant="200" id="o90-yh-MJ4"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="1ex-aA-VEJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="9fh-AB-tzA"/>
+                    <constraint firstItem="N6x-LU-SBb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="YmB-YM-LH2"/>
+                    <constraint firstAttribute="bottom" secondItem="N6x-LU-SBb" secondAttribute="bottom" id="jCi-Nz-Rcw"/>
+                    <constraint firstItem="1ex-aA-VEJ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="snc-pf-N64"/>
+                    <constraint firstAttribute="trailing" secondItem="N6x-LU-SBb" secondAttribute="trailing" id="xte-Mi-WPF"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="backView" destination="6Yx-RJ-qfa" id="qgP-gM-ZLn"/>
+                <outlet property="connectBtn" destination="cfC-JN-hch" id="mVA-Q0-kih"/>
+                <outlet property="nameLabel" destination="1ex-aA-VEJ" id="ilS-Fd-1cN"/>
+                <outlet property="rightConstraint" destination="xte-Mi-WPF" id="441-Hz-d35"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
