@@ -40,7 +40,7 @@
 
 - (void)setupCentral {
     self.central = [[BLECentralManager alloc] initWithQueue:nil updateState:^(BLEManagerState state) {
-        NSLog(@"蓝牙状态改变=%ld", state);
+        NSLog(@"蓝牙状态改变=%ld", (long)state);
     }];
     
     NSArray *arr = [_central retrieveConnectedPeripherals];
