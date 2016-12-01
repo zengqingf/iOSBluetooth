@@ -99,10 +99,6 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
 }
 
 
-- (NSDictionary *)getAdvertisementData {
-    return _advertisementData;
-}
-
 - (void)startdiscoverService {
     [self bt_disconnected];
     [_peripheral discoverServices:@[_mJDYServiceUUID]];

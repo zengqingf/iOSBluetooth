@@ -41,7 +41,4 @@ typedef NS_ENUM(NSInteger, BLECharacteristicWriteType) {
 - (void)startdiscoverService;
 - (void)setPeripheral:(CBPeripheral *)peripheral;
 - (CBPeripheral *)getPeripheral;
-
-- (NSDictionary *)getAdvertisementData;
-
 @end
