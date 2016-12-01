@@ -25,16 +25,12 @@
 @implementation ScanViewController
 - (void)dealloc {
     NSLog(@"scan-dealloc");
-    
-    
-    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataSource     = [NSMutableArray arrayWithCapacity:5];
     self.connectingPers = [NSMutableSet setWithCapacity:5];
 
-    
     [_tableView registerNib:[UINib nibWithNibName:@"ScanTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     _tableView.rowHeight = 80;
     
