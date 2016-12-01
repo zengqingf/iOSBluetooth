@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ScanTableViewCell : UITableViewCell
-
+- (void)setupIndexPath:(NSIndexPath *)indexPath name:(NSString *)name connectState:(BOOL)connected clickBlock:(void (^)(NSIndexPath *indexPath))btnClickBlock;
 @end

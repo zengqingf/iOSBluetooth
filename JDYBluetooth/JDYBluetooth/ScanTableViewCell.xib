@@ -26,8 +26,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfC-JN-hch">
-                        <rect key="frame" x="214" y="6" width="46" height="30"/>
-                        <state key="normal" title="Button"/>
+                        <rect key="frame" x="229" y="6" width="31" height="30"/>
+                        <state key="normal" title="连接"/>
+                        <connections>
+                            <action selector="btnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Nw5-wR-DEc"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>
@@ -37,6 +40,10 @@
                     <constraint firstItem="cfC-JN-hch" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lg2-iw-aqD"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="connectBtn" destination="cfC-JN-hch" id="mVA-Q0-kih"/>
+                <outlet property="nameLabel" destination="1ex-aA-VEJ" id="ilS-Fd-1cN"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

@@ -37,14 +37,14 @@ typedef NS_ENUM(NSInteger, BLEConnectPeripheral) {
 //返回值NO 表示由于正在扫描或者蓝牙未打开导致不能扫描
 //超时后，会自动调用停止扫描
 - (BOOL)scanWithTimeout:(NSTimeInterval)ti
-     discoverPeripheral:(void (^)(BLEPeripheral *ble_peripheral))discoverPeripheralBlock
+     discoverPeripheral:(void (^)(BLEPeripheral *peripheral))discoverPeripheralBlock
                complete:(void (^)(void))scanCompleteBlock;
 - (void)stopScanning;//停止扫描
 
 
 //连接
-- (void) connectPerpheral:(BLEPeripheral *)ble_peripheral connectStateChangeBlock:(void (^)(BLEConnectPeripheral state, NSError *error)) block;
+- (void) connectPerpheral:(BLEPeripheral *)peripheral connectStateChangeBlock:(void (^)(BLEPeripheral *peripheral, BLEConnectPeripheral state, NSError *error)) block;
 //断开连接
-- (void)disConnectBT:(BLEPeripheral *)ble_peripheral;
+- (void)disConnectBT:(BLEPeripheral *)peripheral;
 
 @end

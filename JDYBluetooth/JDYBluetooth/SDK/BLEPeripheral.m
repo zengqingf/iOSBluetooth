@@ -50,7 +50,12 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
 @implementation BLEPeripheral
 
 - (NSString *)name {
-    return _peripheral.name;
+    static NSString *unknown = @"unknown";
+    NSString *t_name = _peripheral.name;
+    if (!t_name) {
+        t_name = unknown;
+    }
+    return t_name;
 }
 - (BLEPeripheralState)state {
     NSInteger st = _peripheral.state;
@@ -86,7 +91,7 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
 
 
 - (void)setPeripheral:(CBPeripheral *)peripheral {
-    self.peripheral = peripheral;
+    _peripheral = peripheral;
 }
 
 - (CBPeripheral *)getPeripheral {
@@ -94,7 +99,7 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
 }
 
 - (void)setAdvertisementData:(NSDictionary *)advertisementData {
-    self.advertisementData = advertisementData;
+    _advertisementData = advertisementData;
 }
 - (NSDictionary *)getAdvertisementData {
     return _advertisementData;

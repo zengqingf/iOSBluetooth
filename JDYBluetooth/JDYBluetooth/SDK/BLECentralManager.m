@@ -11,7 +11,7 @@
 
 @interface BLECentralBrage : NSObject
 @property (nonatomic, strong)BLEPeripheral *ble_peripheral;
-@property (nonatomic, copy)void (^connectStateChangeBlock)(BLEConnectPeripheral state, NSError *error);
+@property (nonatomic, copy)void (^connectStateChangeBlock)(BLEPeripheral *peripheral, BLEConnectPeripheral state, NSError *error);
 - (instancetype)initWithBLEPeripheral:(BLEPeripheral *)ble_peripheral;
 @end
 
@@ -75,7 +75,7 @@ typedef void (^ScanCompleteBlock)(void);
     }
 }
 
-- (void) connectPerpheral:(BLEPeripheral *)ble_peripheral connectStateChangeBlock:(void (^)(BLEConnectPeripheral state, NSError *error)) block {
+- (void) connectPerpheral:(BLEPeripheral *)ble_peripheral connectStateChangeBlock:(void (^)(BLEPeripheral *peripheral, BLEConnectPeripheral state, NSError *error)) block {
     CBPeripheral *peripheral = ble_peripheral.getPeripheral;
     BLECentralBrage *brage = [_dic_discover_bleperipheral objectForKey:peripheral];
     brage.connectStateChangeBlock = block;
@@ -107,23 +107,26 @@ typedef void (^ScanCompleteBlock)(void);
         ble_brage = [[BLECentralBrage alloc] initWithBLEPeripheral:ble_peripheral];
     }
     [_dic_discover_bleperipheral setObject:ble_brage forKey:peripheral];
+    if (_discover_peripheral_block) {
+        _discover_peripheral_block(ble_brage.ble_peripheral);
+    }
 }
 
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     BLECentralBrage *brage = [_dic_discover_bleperipheral objectForKey:peripheral];
     [brage.ble_peripheral startdiscoverService];
-    brage.connectStateChangeBlock(BLEConnectPeripheralSuccess, nil);
+    brage.connectStateChangeBlock(brage.ble_peripheral, BLEConnectPeripheralSuccess, nil);
 }
 
 - (void)centralManager:(CBCentralManager *)central didFailToConnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
     BLECentralBrage *brage = [_dic_discover_bleperipheral objectForKey:peripheral];
-    brage.connectStateChangeBlock(BLEConnectPeripheralFail, error);
+    brage.connectStateChangeBlock(brage.ble_peripheral, BLEConnectPeripheralFail, error);
 }
 
 - (void)centralManager:(CBCentralManager *)central didDisconnectPeripheral:(CBPeripheral *)peripheral error:(nullable NSError *)error {
     BLECentralBrage *brage = [_dic_discover_bleperipheral objectForKey:peripheral];
-    brage.connectStateChangeBlock(BLEConnectPeripheralDisconnected, error);
+    brage.connectStateChangeBlock(brage.ble_peripheral, BLEConnectPeripheralDisconnected, error);
 }
 
 //-----------------util---------------------

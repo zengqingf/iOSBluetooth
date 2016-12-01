@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanViewController">
             <connections>
+                <outlet property="actiview" destination="zPN-g1-96e" id="Oy8-FZ-GlM"/>
                 <outlet property="scanBtn" destination="Qd3-Sm-TkP" id="zLK-V2-KSC"/>
                 <outlet property="tableView" destination="9bl-wt-cAP" id="Lai-JQ-8y3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,24 +32,53 @@
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qd3-Sm-TkP">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                    <color key="backgroundColor" red="0.99912583830000001" green="0.5515209512" blue="0.27686139659999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="72e-Be-ypl"/>
                     </constraints>
                     <state key="normal" title="开始扫描"/>
+                    <state key="selected">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
                     <connections>
                         <action selector="scanOrStopAction:" destination="-1" eventType="touchUpInside" id="QC4-a4-3Q3"/>
                     </connections>
                 </button>
+                <view hidden="YES" alpha="0.25" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zPN-g1-96e">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="NoJ-Xc-aOG">
+                            <rect key="frame" x="169" y="293" width="37" height="37"/>
+                            <color key="color" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正在扫描..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDQ-FR-TvI">
+                            <rect key="frame" x="145.5" y="345" width="83.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="NoJ-Xc-aOG" firstAttribute="centerX" secondItem="zPN-g1-96e" secondAttribute="centerX" id="Ge5-L8-EzE"/>
+                        <constraint firstItem="bDQ-FR-TvI" firstAttribute="top" secondItem="NoJ-Xc-aOG" secondAttribute="bottom" constant="15" id="anf-f0-YRf"/>
+                        <constraint firstItem="NoJ-Xc-aOG" firstAttribute="centerY" secondItem="zPN-g1-96e" secondAttribute="centerY" id="kJA-G1-LR6"/>
+                        <constraint firstItem="bDQ-FR-TvI" firstAttribute="centerX" secondItem="zPN-g1-96e" secondAttribute="centerX" id="pR3-3V-Npb"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="zPN-g1-96e" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3QF-uK-rhO"/>
                 <constraint firstItem="Qd3-Sm-TkP" firstAttribute="top" secondItem="9bl-wt-cAP" secondAttribute="bottom" id="5Hs-dO-Ac5"/>
                 <constraint firstItem="Qd3-Sm-TkP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="B93-Y2-gEA"/>
                 <constraint firstItem="9bl-wt-cAP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="KpF-Ii-a7R"/>
                 <constraint firstItem="9bl-wt-cAP" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Op1-ER-CEr"/>
                 <constraint firstAttribute="bottom" secondItem="Qd3-Sm-TkP" secondAttribute="bottom" id="Ttz-ZC-aD4"/>
+                <constraint firstAttribute="trailing" secondItem="zPN-g1-96e" secondAttribute="trailing" id="Xvs-Km-Knl"/>
                 <constraint firstAttribute="trailing" secondItem="Qd3-Sm-TkP" secondAttribute="trailing" id="d6c-6W-32A"/>
+                <constraint firstItem="Qd3-Sm-TkP" firstAttribute="top" secondItem="zPN-g1-96e" secondAttribute="bottom" id="nG9-Lw-bI9"/>
+                <constraint firstItem="zPN-g1-96e" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="wBN-Zk-dSz"/>
                 <constraint firstAttribute="trailing" secondItem="9bl-wt-cAP" secondAttribute="trailing" id="zIf-K8-Vgf"/>
             </constraints>
             <point key="canvasLocation" x="32.5" y="70.5"/>
