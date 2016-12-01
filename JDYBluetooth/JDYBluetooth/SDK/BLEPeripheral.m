@@ -90,13 +90,6 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
 }
 
 
-- (void)setPeripheral:(CBPeripheral *)peripheral {
-    _peripheral = peripheral;
-}
-
-- (CBPeripheral *)getPeripheral {
-    return _peripheral;
-}
 
 
 - (void)startdiscoverService {

@@ -75,15 +75,18 @@ typedef void (^ScanCompleteBlock)(void);
     }
 }
 
+
+static NSString *peripheral_key = @"peripheral";
 - (void) connectPerpheral:(BLEPeripheral *)ble_peripheral connectStateChangeBlock:(void (^)(BLEPeripheral *peripheral, BLEConnectPeripheral state, NSError *error)) block {
-    CBPeripheral *peripheral = ble_peripheral.getPeripheral;
+    
+    CBPeripheral *peripheral = [ble_peripheral valueForKey:peripheral_key];
     BLECentralBrage *brage = [_dic_discover_bleperipheral objectForKey:peripheral];
     brage.connectStateChangeBlock = block;
     [_central_manager connectPeripheral:peripheral options:nil];
 }
 
 - (void)disConnectBT:(BLEPeripheral *)ble_peripheral  {
-    CBPeripheral *peripheral = ble_peripheral.getPeripheral;
+    CBPeripheral *peripheral = [ble_peripheral valueForKey:peripheral_key];
     [_central_manager cancelPeripheralConnection:peripheral];
 }
 
@@ -117,7 +120,7 @@ typedef void (^ScanCompleteBlock)(void);
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     BLECentralBrage *brage = [_dic_discover_bleperipheral objectForKey:peripheral];
-    brage.ble_peripheral.getPeripheral.delegate = brage.ble_peripheral;
+    peripheral.delegate = (id<CBPeripheralDelegate>)(brage.ble_peripheral);
     [brage.ble_peripheral startdiscoverService];
     brage.connectStateChangeBlock(brage.ble_peripheral, BLEConnectPeripheralSuccess, nil);
 }
