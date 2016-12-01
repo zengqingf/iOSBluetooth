@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B8718851DF0304100B1BCC1 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8718831DF0304100B1BCC1 /* DataViewController.m */; };
+		4B8718861DF0304100B1BCC1 /* DataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8718841DF0304100B1BCC1 /* DataViewController.xib */; };
+		4B87188B1DF03B6700B1BCC1 /* BLETool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B87188A1DF03B6700B1BCC1 /* BLETool.m */; };
 		4BB37A3F1DEEC8FA00FEAD83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A3E1DEEC8FA00FEAD83 /* main.m */; };
 		4BB37A421DEEC8FA00FEAD83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A411DEEC8FA00FEAD83 /* AppDelegate.m */; };
 		4BB37A4A1DEEC8FA00FEAD83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BB37A491DEEC8FA00FEAD83 /* Assets.xcassets */; };
@@ -21,6 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4B8718821DF0304100B1BCC1 /* DataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
+		4B8718831DF0304100B1BCC1 /* DataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
+		4B8718841DF0304100B1BCC1 /* DataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataViewController.xib; sourceTree = "<group>"; };
+		4B8718891DF03B6700B1BCC1 /* BLETool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLETool.h; sourceTree = "<group>"; };
+		4B87188A1DF03B6700B1BCC1 /* BLETool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLETool.m; sourceTree = "<group>"; };
 		4BB37A3A1DEEC8FA00FEAD83 /* JDYBluetooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JDYBluetooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB37A3E1DEEC8FA00FEAD83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4BB37A401DEEC8FA00FEAD83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -54,6 +62,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B8718811DF0302300B1BCC1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4B8718821DF0304100B1BCC1 /* DataViewController.h */,
+				4B8718831DF0304100B1BCC1 /* DataViewController.m */,
+				4B8718841DF0304100B1BCC1 /* DataViewController.xib */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		4B8718871DF0321500B1BCC1 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				4BB37A681DEF0C4200FEAD83 /* ScanTableViewCell.h */,
+				4BB37A691DEF0C4200FEAD83 /* ScanTableViewCell.m */,
+				4BB37A6A1DEF0C4200FEAD83 /* ScanTableViewCell.xib */,
+			);
+			name = cell;
+			sourceTree = "<group>";
+		};
+		4B8718881DF03B5500B1BCC1 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				4B8718891DF03B6700B1BCC1 /* BLETool.h */,
+				4B87188A1DF03B6700B1BCC1 /* BLETool.m */,
+			);
+			name = Tool;
+			sourceTree = "<group>";
+		};
 		4BB37A311DEEC8FA00FEAD83 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +114,8 @@
 				4BB37A401DEEC8FA00FEAD83 /* AppDelegate.h */,
 				4BB37A411DEEC8FA00FEAD83 /* AppDelegate.m */,
 				4BB37A651DEF0BCB00FEAD83 /* Scan */,
+				4B8718811DF0302300B1BCC1 /* Data */,
+				4B8718881DF03B5500B1BCC1 /* Tool */,
 				4BB37A581DEECA3B00FEAD83 /* SDK */,
 				4BB37A491DEEC8FA00FEAD83 /* Assets.xcassets */,
 				4BB37A4B1DEEC8FA00FEAD83 /* LaunchScreen.storyboard */,
@@ -120,9 +159,7 @@
 				4BB37A5F1DEEDD2B00FEAD83 /* ScanViewController.h */,
 				4BB37A601DEEDD2B00FEAD83 /* ScanViewController.m */,
 				4BB37A611DEEDD2B00FEAD83 /* ScanViewController.xib */,
-				4BB37A681DEF0C4200FEAD83 /* ScanTableViewCell.h */,
-				4BB37A691DEF0C4200FEAD83 /* ScanTableViewCell.m */,
-				4BB37A6A1DEF0C4200FEAD83 /* ScanTableViewCell.xib */,
+				4B8718871DF0321500B1BCC1 /* cell */,
 			);
 			name = Scan;
 			sourceTree = "<group>";
@@ -187,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BB37A631DEEDD2B00FEAD83 /* ScanViewController.xib in Resources */,
+				4B8718861DF0304100B1BCC1 /* DataViewController.xib in Resources */,
 				4BB37A4D1DEEC8FA00FEAD83 /* LaunchScreen.storyboard in Resources */,
 				4BB37A6C1DEF0C4200FEAD83 /* ScanTableViewCell.xib in Resources */,
 				4BB37A4A1DEEC8FA00FEAD83 /* Assets.xcassets in Resources */,
@@ -200,9 +238,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B87188B1DF03B6700B1BCC1 /* BLETool.m in Sources */,
 				4BB37A421DEEC8FA00FEAD83 /* AppDelegate.m in Sources */,
 				4BB37A621DEEDD2B00FEAD83 /* ScanViewController.m in Sources */,
 				4BB37A6B1DEF0C4200FEAD83 /* ScanTableViewCell.m in Sources */,
+				4B8718851DF0304100B1BCC1 /* DataViewController.m in Sources */,
 				4BB37A5E1DEECB1700FEAD83 /* BLEPeripheral.m in Sources */,
 				4BB37A3F1DEEC8FA00FEAD83 /* main.m in Sources */,
 				4BB37A5B1DEECAF000FEAD83 /* BLECentralManager.m in Sources */,

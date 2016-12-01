@@ -8,11 +8,14 @@
 
 #import "ScanViewController.h"
 #import "ScanTableViewCell.h"
+#import "DataViewController.h"
 #import "BLE.h"
 
 @interface ScanViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic, strong)BLECentralManager *central;
 @property (nonatomic) NSMutableArray *dataSource;
+@property (nonatomic) NSMutableSet *connectingPers;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *scanBtn;
 @property (weak, nonatomic) IBOutlet UIView *actiview;
@@ -24,10 +27,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataSource = [NSMutableArray arrayWithCapacity:5];
+    self.connectingPers = [NSMutableSet setWithCapacity:5];
     // Do any additional setup after loading the view from its nib.
     
 //    [_tableView registerClass:[ScanTableViewCell class] forCellReuseIdentifier:@"cell"];
     [_tableView registerNib:[UINib nibWithNibName:@"ScanTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+    _tableView.rowHeight = 80;
     
     [self setupCentral];
     
@@ -60,9 +65,10 @@
         [self setbtnScanState:NO];
     } else {
         [_dataSource removeAllObjects];
+        [_dataSource addObjectsFromArray:[_connectingPers allObjects]];
         [_tableView reloadData];
         [self setbtnScanState:YES];
-        [_central scanWithTimeout:10 discoverPeripheral:^(BLEPeripheral *peripheral) {
+        [_central scanWithTimeout:5 discoverPeripheral:^(BLEPeripheral *peripheral) {
             [self dataArrAddobject:peripheral];
         } complete:^{
             [self setbtnScanState:NO];
@@ -93,9 +99,11 @@
             switch (state) {
                 case BLEConnectPeripheralDisconnected:
                     NSLog(@"%@断开连接", peripheral.name);
+                    [_connectingPers removeObject:peripheral];
                     break;
                 case BLEConnectPeripheralSuccess:
                     NSLog(@"%@连接成功", peripheral.name);
+                    [_connectingPers addObject:peripheral];
                     break;
                 case BLEConnectPeripheralFail:
                     NSLog(@"%@连接失败", peripheral.name);
@@ -122,8 +130,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *ide = @"cell";
     ScanTableViewCell *cell = (ScanTableViewCell *)[tableView dequeueReusableCellWithIdentifier:ide forIndexPath:indexPath];
+    
     BLEPeripheral *peripheral = _dataSource[indexPath.row];
-    BOOL connectState = (peripheral.state ==  BLEPeripheralStateConnected);
+    BOOL connectState = (peripheral.state == BLEPeripheralStateConnected);
     [cell setupIndexPath:indexPath name:peripheral.name connectState:connectState clickBlock:^(NSIndexPath *indexPath) {
         BLEPeripheral *peripheral = _dataSource[indexPath.row];
         [self connectOrDisconnectPeripheral:peripheral];
@@ -134,6 +143,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    DataViewController *vc = [[DataViewController alloc] init];
+    vc.peripheral = _dataSource[indexPath.row];
+    [self.navigationController showViewController:vc sender:self];
+    
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
+    BLEPeripheral *peripheral = _dataSource[indexPath.row];
+    return (peripheral.state == BLEPeripheralStateConnected);
 }
 
 @end

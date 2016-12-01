@@ -121,7 +121,7 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if([keyPath isEqualToString:@"num"] && object == _peripheral) {
+    if([keyPath isEqualToString:@"state"] && object == _peripheral) {
         NSString *nStr = [change valueForKey:@"new"];
         NSInteger t = nStr.integerValue;
         if (t != CBPeripheralStateConnected) {

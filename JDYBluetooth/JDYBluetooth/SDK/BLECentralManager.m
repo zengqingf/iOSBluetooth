@@ -115,6 +115,7 @@ typedef void (^ScanCompleteBlock)(void);
 
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     BLECentralBrage *brage = [_dic_discover_bleperipheral objectForKey:peripheral];
+    brage.ble_peripheral.getPeripheral.delegate = brage.ble_peripheral;
     [brage.ble_peripheral startdiscoverService];
     brage.connectStateChangeBlock(brage.ble_peripheral, BLEConnectPeripheralSuccess, nil);
 }
