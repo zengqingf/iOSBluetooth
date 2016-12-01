@@ -26,11 +26,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.dataSource = [NSMutableArray arrayWithCapacity:5];
+    self.dataSource     = [NSMutableArray arrayWithCapacity:5];
     self.connectingPers = [NSMutableSet setWithCapacity:5];
-    // Do any additional setup after loading the view from its nib.
+
     
-//    [_tableView registerClass:[ScanTableViewCell class] forCellReuseIdentifier:@"cell"];
     [_tableView registerNib:[UINib nibWithNibName:@"ScanTableViewCell" bundle:nil] forCellReuseIdentifier:@"cell"];
     _tableView.rowHeight = 80;
     
@@ -39,8 +38,8 @@
 }
 
 - (void)setupCentral {
-    self.central = [[BLECentralManager alloc] initWithQueue:nil updateState:^(BLEManagerState status) {
-        
+    self.central = [[BLECentralManager alloc] initWithQueue:nil updateState:^(BLEManagerState state) {
+        NSLog(@"蓝牙状态改变=%ld", state);
     }];
     
     
@@ -68,10 +67,16 @@
         [_dataSource addObjectsFromArray:[_connectingPers allObjects]];
         [_tableView reloadData];
         [self setbtnScanState:YES];
+        
+        
+        __weak __typeof(self)weakSelf = self;
+    
         [_central scanWithTimeout:5 discoverPeripheral:^(BLEPeripheral *peripheral) {
-            [self dataArrAddobject:peripheral];
+            __strong __typeof(weakSelf)strongSelf = weakSelf;
+            [strongSelf dataArrAddobject:peripheral];
         } complete:^{
-            [self setbtnScanState:NO];
+            __strong __typeof(weakSelf)strongSelf = weakSelf;
+            [strongSelf setbtnScanState:NO];
         }];
     }
 }
@@ -133,9 +138,12 @@
     
     BLEPeripheral *peripheral = _dataSource[indexPath.row];
     BOOL connectState = (peripheral.state == BLEPeripheralStateConnected);
+    
+    __weak __typeof(self)weakSelf = self;
     [cell setupIndexPath:indexPath name:peripheral.name connectState:connectState clickBlock:^(NSIndexPath *indexPath) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
         BLEPeripheral *peripheral = _dataSource[indexPath.row];
-        [self connectOrDisconnectPeripheral:peripheral];
+        [strongSelf connectOrDisconnectPeripheral:peripheral];
     }];
     
     return cell;

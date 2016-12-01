@@ -31,7 +31,7 @@ typedef NS_ENUM(NSInteger, BLEConnectPeripheral) {
 @property(nonatomic, assign, readonly) BLEManagerState state;
 @property(nonatomic, assign, readonly) BOOL isScanning;
 
-- (instancetype)initWithQueue:(dispatch_queue_t)queue updateState:(void (^)(BLEManagerState status))block;
+- (instancetype)initWithQueue:(dispatch_queue_t)queue updateState:(void (^)(BLEManagerState state))block;
 
 //返回值YES 表示真实的调用了扫描方法
 //返回值NO 表示由于正在扫描或者蓝牙未打开导致不能调用扫描方法

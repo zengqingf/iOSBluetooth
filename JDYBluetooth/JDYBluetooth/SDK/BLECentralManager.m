@@ -40,7 +40,7 @@ typedef void (^ScanCompleteBlock)(void);
 
 @implementation BLECentralManager
 
-- (instancetype)initWithQueue:(dispatch_queue_t)queue updateState:(void (^)(BLEManagerState status))block {
+- (instancetype)initWithQueue:(dispatch_queue_t)queue updateState:(void (^)(BLEManagerState state))block {
     self = [super init];
     if (self) {
         self.central_status_block = block;
