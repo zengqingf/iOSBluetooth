@@ -34,7 +34,7 @@ typedef NS_ENUM(NSInteger, BLEConnectPeripheral) {
 - (instancetype)initWithQueue:(dispatch_queue_t)queue updateState:(void (^)(BLEManagerState status))block;
 
 //返回值YES 表示真实的调用了扫描方法
-//返回值NO 表示由于正在扫描或者蓝牙未打开导致不能扫描
+//返回值NO 表示由于正在扫描或者蓝牙未打开导致不能调用扫描方法
 //超时后，会自动调用停止扫描
 - (BOOL)scanWithTimeout:(NSTimeInterval)ti
      discoverPeripheral:(void (^)(BLEPeripheral *peripheral))discoverPeripheralBlock
