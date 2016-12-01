@@ -12,13 +12,12 @@
 		4B87188B1DF03B6700B1BCC1 /* BLETool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B87188A1DF03B6700B1BCC1 /* BLETool.m */; };
 		4B8718941DF04D5500B1BCC1 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8718921DF04D5500B1BCC1 /* FirstViewController.m */; };
 		4B8718951DF04D5500B1BCC1 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8718931DF04D5500B1BCC1 /* FirstViewController.xib */; };
+		4B99763D1DF0642900C253D0 /* libJDYBLE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B99763C1DF0642900C253D0 /* libJDYBLE.a */; };
 		4BB37A3F1DEEC8FA00FEAD83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A3E1DEEC8FA00FEAD83 /* main.m */; };
 		4BB37A421DEEC8FA00FEAD83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A411DEEC8FA00FEAD83 /* AppDelegate.m */; };
 		4BB37A4A1DEEC8FA00FEAD83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BB37A491DEEC8FA00FEAD83 /* Assets.xcassets */; };
 		4BB37A4D1DEEC8FA00FEAD83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BB37A4B1DEEC8FA00FEAD83 /* LaunchScreen.storyboard */; };
 		4BB37A561DEEC9F200FEAD83 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BB37A551DEEC9F200FEAD83 /* CoreBluetooth.framework */; };
-		4BB37A5B1DEECAF000FEAD83 /* BLECentralManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A5A1DEECAF000FEAD83 /* BLECentralManager.m */; };
-		4BB37A5E1DEECB1700FEAD83 /* BLEPeripheral.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A5D1DEECB1700FEAD83 /* BLEPeripheral.m */; };
 		4BB37A621DEEDD2B00FEAD83 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A601DEEDD2B00FEAD83 /* ScanViewController.m */; };
 		4BB37A631DEEDD2B00FEAD83 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BB37A611DEEDD2B00FEAD83 /* ScanViewController.xib */; };
 		4BB37A6B1DEF0C4200FEAD83 /* ScanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A691DEF0C4200FEAD83 /* ScanTableViewCell.m */; };
@@ -34,6 +33,7 @@
 		4B8718911DF04D5500B1BCC1 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		4B8718921DF04D5500B1BCC1 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		4B8718931DF04D5500B1BCC1 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
+		4B99763C1DF0642900C253D0 /* libJDYBLE.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libJDYBLE.a; sourceTree = "<group>"; };
 		4BB37A3A1DEEC8FA00FEAD83 /* JDYBluetooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JDYBluetooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB37A3E1DEEC8FA00FEAD83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4BB37A401DEEC8FA00FEAD83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -43,9 +43,7 @@
 		4BB37A4E1DEEC8FA00FEAD83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4BB37A551DEEC9F200FEAD83 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		4BB37A591DEECAF000FEAD83 /* BLECentralManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLECentralManager.h; sourceTree = "<group>"; };
-		4BB37A5A1DEECAF000FEAD83 /* BLECentralManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLECentralManager.m; sourceTree = "<group>"; };
 		4BB37A5C1DEECB1700FEAD83 /* BLEPeripheral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLEPeripheral.h; sourceTree = "<group>"; };
-		4BB37A5D1DEECB1700FEAD83 /* BLEPeripheral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLEPeripheral.m; sourceTree = "<group>"; };
 		4BB37A5F1DEEDD2B00FEAD83 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		4BB37A601DEEDD2B00FEAD83 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		4BB37A611DEEDD2B00FEAD83 /* ScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
@@ -61,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BB37A561DEEC9F200FEAD83 /* CoreBluetooth.framework in Frameworks */,
+				4B99763D1DF0642900C253D0 /* libJDYBLE.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,9 +153,8 @@
 			children = (
 				4BB37A641DEEEEE400FEAD83 /* BLE.h */,
 				4BB37A591DEECAF000FEAD83 /* BLECentralManager.h */,
-				4BB37A5A1DEECAF000FEAD83 /* BLECentralManager.m */,
 				4BB37A5C1DEECB1700FEAD83 /* BLEPeripheral.h */,
-				4BB37A5D1DEECB1700FEAD83 /* BLEPeripheral.m */,
+				4B99763C1DF0642900C253D0 /* libJDYBLE.a */,
 			);
 			path = SDK;
 			sourceTree = "<group>";
@@ -253,9 +251,7 @@
 				4BB37A621DEEDD2B00FEAD83 /* ScanViewController.m in Sources */,
 				4BB37A6B1DEF0C4200FEAD83 /* ScanTableViewCell.m in Sources */,
 				4B8718851DF0304100B1BCC1 /* DataViewController.m in Sources */,
-				4BB37A5E1DEECB1700FEAD83 /* BLEPeripheral.m in Sources */,
 				4BB37A3F1DEEC8FA00FEAD83 /* main.m in Sources */,
-				4BB37A5B1DEECAF000FEAD83 /* BLECentralManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -371,6 +367,10 @@
 				INFOPLIST_FILE = JDYBluetooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JDYBluetooth/SDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.judiancloud.bluetooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -384,6 +384,10 @@
 				INFOPLIST_FILE = JDYBluetooth/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/JDYBluetooth/SDK",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.judiancloud.bluetooth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
