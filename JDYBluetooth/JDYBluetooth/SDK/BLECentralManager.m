@@ -77,7 +77,8 @@ typedef void (^ScanCompleteBlock)(void);
 
 
 static NSString *peripheral_key = @"peripheral";
-- (void) connectPerpheral:(BLEPeripheral *)ble_peripheral connectStateChangeBlock:(void (^)(BLEPeripheral *peripheral, BLEConnectPeripheral state, NSError *error)) block {
+- (void) connectPerpheral:(BLEPeripheral *)ble_peripheral
+  connectStateChangeBlock:(void (^)(BLEPeripheral *peripheral, BLEConnectPeripheral state, NSError *error)) block {
     
     CBPeripheral *peripheral = [ble_peripheral valueForKey:peripheral_key];
     BLECentralBrage *brage = [_dic_discover_bleperipheral objectForKey:peripheral];
@@ -122,7 +123,6 @@ static NSString *adv_key = @"advertisementData";
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     BLECentralBrage *brage = [_dic_discover_bleperipheral objectForKey:peripheral];
     peripheral.delegate = (id<CBPeripheralDelegate>)(brage.ble_peripheral);
-    
     static NSString *stServiceName = @"startdiscoverService";
    
 #pragma clang diagnostic push
@@ -130,7 +130,6 @@ static NSString *adv_key = @"advertisementData";
     SEL startService = NSSelectorFromString(stServiceName);
     [brage.ble_peripheral performSelector:startService];
 #pragma clang diagnostic pop
-    
     
     brage.connectStateChangeBlock(brage.ble_peripheral, BLEConnectPeripheralSuccess, nil);
 }
