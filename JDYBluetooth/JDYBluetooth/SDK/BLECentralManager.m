@@ -16,6 +16,8 @@
 @end
 
 @implementation BLECentralBrage
+
+
 - (instancetype)initWithBLEPeripheral:(BLEPeripheral *)ble_peripheral {
     self = [super init];
     if (self) {
@@ -66,6 +68,29 @@ typedef void (^ScanCompleteBlock)(void);
     return _isScanning;
 }
 
+
+- (NSArray<BLEPeripheral *> *)retrieveConnectedPeripherals {
+    NSString *servUUIDStr = [BLEPeripheral serviceUUID];
+    CBUUID *serviceUUID = [CBUUID UUIDWithString:servUUIDStr];
+    NSArray *t_arr = [_central_manager retrieveConnectedPeripheralsWithServices:@[serviceUUID]];
+    
+    NSMutableArray *ble_peripherals = [NSMutableArray arrayWithCapacity:5];
+    for (NSInteger i = 0; i < t_arr.count; i++) {
+        CBPeripheral *peripheral = t_arr[i];
+        BLECentralBrage *ble_brage = [_dic_discover_bleperipheral objectForKey:peripheral];
+        
+        if (!ble_brage) {
+            BLEPeripheral *ble_peripheral = [[BLEPeripheral alloc] initWithPeripheral:peripheral adv:nil];
+            ble_brage = [[BLECentralBrage alloc] initWithBLEPeripheral:ble_peripheral];
+        }
+        [ble_peripherals addObject:ble_brage.ble_peripheral];
+        [_dic_discover_bleperipheral setObject:ble_brage forKey:peripheral];
+    }
+    
+    return ble_peripherals;
+
+}
+
 - (void)stopScanning {
     if(!_isScanning) return;
     [self.central_manager stopScan];
@@ -108,9 +133,7 @@ static NSString *adv_key = @"advertisementData";
         [ble_brage.ble_peripheral setValue:advertisementData forKey:adv_key];
         
     } else {
-        BLEPeripheral *ble_peripheral = [[BLEPeripheral alloc] init];
-        [ble_peripheral setValue:peripheral forKey:peripheral_key];
-        [ble_peripheral setValue:advertisementData forKey:adv_key];
+        BLEPeripheral *ble_peripheral = [[BLEPeripheral alloc] initWithPeripheral:peripheral adv:advertisementData];
         ble_brage = [[BLECentralBrage alloc] initWithBLEPeripheral:ble_peripheral];
     }
     [_dic_discover_bleperipheral setObject:ble_brage forKey:peripheral];

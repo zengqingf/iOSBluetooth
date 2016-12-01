@@ -40,6 +40,8 @@ typedef NS_ENUM(NSInteger, BLEConnectPeripheral) {
      discoverPeripheral:(void (^)(BLEPeripheral *peripheral))discoverPeripheralBlock
                complete:(void (^)(void))scanCompleteBlock;
 - (void)stopScanning;//停止扫描
+//已经连接的蓝牙是搜索不到的，调用此方法可以获取
+- (NSArray<BLEPeripheral *> *)retrieveConnectedPeripherals;
 
 
 //连接

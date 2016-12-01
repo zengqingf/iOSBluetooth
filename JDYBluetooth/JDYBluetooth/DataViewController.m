@@ -17,16 +17,16 @@
 @end
 
 @implementation DataViewController
-
+- (void)dealloc {
+    NSLog(@"data -dealloc");
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     [self receiveData];
 }
 - (IBAction)sendAction:(id)sender {
     
     NSString *content = _inputTv.text;
-    
     NSData *data = [BLETool dataWithHexString:content];
     [_peripheral sendData:data type:BLECharacteristicWriteWithResponse sendMessageCompleteBlock:^(NSError *error) {
         NSLog(@"发送完成");
@@ -35,10 +35,11 @@
 }
 
 - (void)receiveData {
+    __weak __typeof(self)weakSelf = self;
     [_peripheral startReceiveDataWithBlock:^(NSData *data, NSError *error) {
-        NSLog(@"收到数据");
         NSString *str = [BLETool hexStringWithData:data];
-        _outTv.text = str;
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        strongSelf.outTv.text = str;
     }];
 }
 
@@ -49,14 +50,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
 
 @end

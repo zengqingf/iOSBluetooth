@@ -30,19 +30,10 @@ typedef void (^BtnClickBlock)(NSIndexPath *indexPath);
     // Initialization code
 }
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        NSLog(@"23");
-    }
-    return self;
-}
-
 - (void)setupIndexPath:(NSIndexPath *)indexPath name:(NSString *)name connectState:(BOOL)connected clickBlock:(void (^)(NSIndexPath *))btnClickBlock {
     
     static NSString *conn = @"连接";
     static NSString *unconn = @"断开";
-    
     
     _nameLabel.text = name;
     _connected = connected;

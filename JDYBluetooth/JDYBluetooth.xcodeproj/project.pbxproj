@@ -10,6 +10,8 @@
 		4B8718851DF0304100B1BCC1 /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8718831DF0304100B1BCC1 /* DataViewController.m */; };
 		4B8718861DF0304100B1BCC1 /* DataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8718841DF0304100B1BCC1 /* DataViewController.xib */; };
 		4B87188B1DF03B6700B1BCC1 /* BLETool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B87188A1DF03B6700B1BCC1 /* BLETool.m */; };
+		4B8718941DF04D5500B1BCC1 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B8718921DF04D5500B1BCC1 /* FirstViewController.m */; };
+		4B8718951DF04D5500B1BCC1 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B8718931DF04D5500B1BCC1 /* FirstViewController.xib */; };
 		4BB37A3F1DEEC8FA00FEAD83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A3E1DEEC8FA00FEAD83 /* main.m */; };
 		4BB37A421DEEC8FA00FEAD83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB37A411DEEC8FA00FEAD83 /* AppDelegate.m */; };
 		4BB37A4A1DEEC8FA00FEAD83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4BB37A491DEEC8FA00FEAD83 /* Assets.xcassets */; };
@@ -29,6 +31,9 @@
 		4B8718841DF0304100B1BCC1 /* DataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DataViewController.xib; sourceTree = "<group>"; };
 		4B8718891DF03B6700B1BCC1 /* BLETool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BLETool.h; sourceTree = "<group>"; };
 		4B87188A1DF03B6700B1BCC1 /* BLETool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BLETool.m; sourceTree = "<group>"; };
+		4B8718911DF04D5500B1BCC1 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		4B8718921DF04D5500B1BCC1 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		4B8718931DF04D5500B1BCC1 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
 		4BB37A3A1DEEC8FA00FEAD83 /* JDYBluetooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JDYBluetooth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BB37A3E1DEEC8FA00FEAD83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4BB37A401DEEC8FA00FEAD83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -113,6 +118,9 @@
 			children = (
 				4BB37A401DEEC8FA00FEAD83 /* AppDelegate.h */,
 				4BB37A411DEEC8FA00FEAD83 /* AppDelegate.m */,
+				4B8718911DF04D5500B1BCC1 /* FirstViewController.h */,
+				4B8718921DF04D5500B1BCC1 /* FirstViewController.m */,
+				4B8718931DF04D5500B1BCC1 /* FirstViewController.xib */,
 				4BB37A651DEF0BCB00FEAD83 /* Scan */,
 				4B8718811DF0302300B1BCC1 /* Data */,
 				4B8718881DF03B5500B1BCC1 /* Tool */,
@@ -224,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BB37A631DEEDD2B00FEAD83 /* ScanViewController.xib in Resources */,
+				4B8718951DF04D5500B1BCC1 /* FirstViewController.xib in Resources */,
 				4B8718861DF0304100B1BCC1 /* DataViewController.xib in Resources */,
 				4BB37A4D1DEEC8FA00FEAD83 /* LaunchScreen.storyboard in Resources */,
 				4BB37A6C1DEF0C4200FEAD83 /* ScanTableViewCell.xib in Resources */,
@@ -239,6 +248,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B87188B1DF03B6700B1BCC1 /* BLETool.m in Sources */,
+				4B8718941DF04D5500B1BCC1 /* FirstViewController.m in Sources */,
 				4BB37A421DEEC8FA00FEAD83 /* AppDelegate.m in Sources */,
 				4BB37A621DEEDD2B00FEAD83 /* ScanViewController.m in Sources */,
 				4BB37A6B1DEF0C4200FEAD83 /* ScanTableViewCell.m in Sources */,

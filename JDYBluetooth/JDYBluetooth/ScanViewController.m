@@ -23,7 +23,12 @@
 @end
 
 @implementation ScanViewController
-
+- (void)dealloc {
+    NSLog(@"scan-dealloc");
+    
+    
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dataSource     = [NSMutableArray arrayWithCapacity:5];
@@ -42,7 +47,8 @@
         NSLog(@"蓝牙状态改变=%ld", state);
     }];
     
-    
+    NSArray *arr = [_central retrieveConnectedPeripherals];
+    [_connectingPers addObjectsFromArray:arr];
 }
 
 - (void)dataArrAddobject:(id)object {
@@ -100,15 +106,19 @@
     if (peripheral.state == BLEPeripheralStateConnected) {
         [_central disConnectBT:peripheral];
     } else if (peripheral.state == BLEPeripheralStateDisconnected) {
+        
+        __weak __typeof(self)weakSelf = self;
+        
         [_central connectPerpheral:peripheral connectStateChangeBlock:^(BLEPeripheral *peripheral, BLEConnectPeripheral state, NSError *error) {
+            __strong __typeof(weakSelf)strongSelf = weakSelf;
             switch (state) {
                 case BLEConnectPeripheralDisconnected:
                     NSLog(@"%@断开连接", peripheral.name);
-                    [_connectingPers removeObject:peripheral];
+                    [strongSelf.connectingPers removeObject:peripheral];
                     break;
                 case BLEConnectPeripheralSuccess:
                     NSLog(@"%@连接成功", peripheral.name);
-                    [_connectingPers addObject:peripheral];
+                    [strongSelf.connectingPers addObject:peripheral];
                     break;
                 case BLEConnectPeripheralFail:
                     NSLog(@"%@连接失败", peripheral.name);
@@ -117,10 +127,19 @@
                 default:
                     break;
             }
-            [_tableView reloadData];
+            [strongSelf.tableView reloadData];
         }];
         
     }
+}
+
+- (void)disconnectAllPeripheral {
+    __weak __typeof(self)weakSelf = self;
+    
+    [_connectingPers enumerateObjectsUsingBlock:^(id  _Nonnull obj, BOOL * _Nonnull stop) {
+        __strong __typeof(weakSelf)strongSelf = weakSelf;
+        [strongSelf.central disConnectBT:obj];
+    }];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -137,12 +156,14 @@
     ScanTableViewCell *cell = (ScanTableViewCell *)[tableView dequeueReusableCellWithIdentifier:ide forIndexPath:indexPath];
     
     BLEPeripheral *peripheral = _dataSource[indexPath.row];
+    
+    
     BOOL connectState = (peripheral.state == BLEPeripheralStateConnected);
     
     __weak __typeof(self)weakSelf = self;
     [cell setupIndexPath:indexPath name:peripheral.name connectState:connectState clickBlock:^(NSIndexPath *indexPath) {
         __strong __typeof(weakSelf)strongSelf = weakSelf;
-        BLEPeripheral *peripheral = _dataSource[indexPath.row];
+        BLEPeripheral *peripheral = strongSelf.dataSource[indexPath.row];
         [strongSelf connectOrDisconnectPeripheral:peripheral];
     }];
     

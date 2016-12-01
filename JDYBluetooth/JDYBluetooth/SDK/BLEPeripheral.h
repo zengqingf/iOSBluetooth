@@ -37,4 +37,7 @@ typedef NS_ENUM(NSInteger, BLECharacteristicWriteType) {
 //监控蓝牙外设发过来的消息
 - (void)startReceiveDataWithBlock:(void (^)(NSData *data, NSError *error))block;
 
+
+- (instancetype)initWithPeripheral:(id)peripheral adv:(NSDictionary *)advertisementData;
++ (NSString *)serviceUUID;
 @end

@@ -49,6 +49,10 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
 
 @implementation BLEPeripheral
 
++ (NSString *)serviceUUID {
+    return kJDYServiceUUID;
+}
+
 - (NSString *)name {
     static NSString *unknown = @"unknown";
     NSString *t_name = _peripheral.name;
@@ -62,20 +66,26 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
     return st;
 }
 
-- (instancetype)init {
+static NSString *state_key = @"state";
+- (void)dealloc {
+    [_peripheral removeObserver:self forKeyPath:state_key context:nil];
+}
+
+- (instancetype)initWithPeripheral:(CBPeripheral *)peripheral adv:(NSDictionary *)advertisementData{
     self = [super init];
     if (self) {
         self.mJDYServiceUUID = [CBUUID UUIDWithString:kJDYServiceUUID];
         self.mJDYNofifyUUID  = [CBUUID UUIDWithString:kJDYNotifyUUID];
         self.mJDYWriteUUID   = [CBUUID UUIDWithString:kJDYWriteUUID];
-        [_peripheral addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
+        self.peripheral = peripheral;
+        self.advertisementData = advertisementData;
+        
+        [_peripheral addObserver:self forKeyPath:state_key options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
 
-- (void)dealloc {
-    [_peripheral removeObserver:self forKeyPath:@"state"];
-}
+
 
 - (void)sendData:(NSData *)data type:(BLECharacteristicWriteType) type sendMessageCompleteBlock:(void (^)(NSError *))block {
     if (_mJDYWriteCharacteristic) {
@@ -107,7 +117,7 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-    if([keyPath isEqualToString:@"state"] && object == _peripheral) {
+    if([keyPath isEqualToString:state_key] && object == _peripheral) {
         NSString *nStr = [change valueForKey:@"new"];
         NSInteger t = nStr.integerValue;
         if (t != CBPeripheralStateConnected) {
