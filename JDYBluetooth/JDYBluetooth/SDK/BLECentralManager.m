@@ -121,7 +121,16 @@ static NSString *peripheral_key = @"peripheral";
 - (void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPeripheral *)peripheral {
     BLECentralBrage *brage = [_dic_discover_bleperipheral objectForKey:peripheral];
     peripheral.delegate = (id<CBPeripheralDelegate>)(brage.ble_peripheral);
-    [brage.ble_peripheral startdiscoverService];
+    
+    static NSString *stServiceName = @"startdiscoverService";
+   
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    SEL startService = NSSelectorFromString(stServiceName);
+    [brage.ble_peripheral performSelector:startService];
+#pragma clang diagnostic pop
+    
+    
     brage.connectStateChangeBlock(brage.ble_peripheral, BLEConnectPeripheralSuccess, nil);
 }
 

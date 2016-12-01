@@ -74,6 +74,17 @@ typedef void (^SendDataCompleteBlock)(NSError *error);
     return self;
 }
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.mJDYServiceUUID = [CBUUID UUIDWithString:kJDYServiceUUID];
+        self.mJDYNofifyUUID  = [CBUUID UUIDWithString:kJDYNotifyUUID];
+        self.mJDYWriteUUID   = [CBUUID UUIDWithString:kJDYWriteUUID];
+        [_peripheral addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:nil];
+    }
+    return self;
+}
+
 - (void)dealloc {
     [_peripheral removeObserver:self forKeyPath:@"state"];
 }

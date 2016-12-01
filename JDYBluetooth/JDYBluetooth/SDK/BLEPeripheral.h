@@ -36,11 +36,7 @@ typedef NS_ENUM(NSInteger, BLECharacteristicWriteType) {
 
 
 
-//下面方法都要删掉
+//不要调用此方法--谢谢合作
 - (instancetype)initWithCBPeripheral:(CBPeripheral *)peripheral advertisementData:(NSDictionary *)advertisementData;
-- (void)startdiscoverService;
-
-
-
 
 @end
